@@ -1,0 +1,17 @@
+#!/usr/local/bin/execlineb -P
+fdmove -c 2 1
+foreground {
+	redirfd -r 0 /proc/mounts
+	pipeline { grep " nfs[^d] " }
+	pipeline { s6-cut -d " " -f 2 }							
+	forstdin -d"\n" -- mntpt
+	importas -u mntpt mntpt				
+	foreground {
+		umount -fv ${mntpt}
+	}
+}
+if { umount -l /proc/fs/nfsd }
+if { umount -l /var/lib/nfs/rpc_pipefs }
+if { rpc.nfsd -- 0 }
+exportfs -a
+

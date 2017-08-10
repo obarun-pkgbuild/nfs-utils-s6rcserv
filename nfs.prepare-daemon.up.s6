@@ -1,0 +1,10 @@
+#!/usr/local/bin/execlineb -P
+fdmove -c 2 1
+foreground { bash -c "source /etc/nfs.conf" }
+foreground { bash -c "source /etc/nfsmount.conf" }
+	
+if { modprobe -a sunrpc nfs nfsd }
+if -t { mount -t rpc_pipefs rpc_pipefs /var/lib/nfs/rpc_pipefs }
+if -t { mount -t nfsd nfsd /proc/fs/nfsd }
+exec -c
+/usr/bin/exportfs -r -a

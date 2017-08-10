@@ -1,0 +1,7 @@
+nfs-prepare
+rpcbind-daemon
+rpcbind-log
+rpc.statd-daemon
+rpc.statd-log
+rpc.mountd-daemon
+rpc.mountd-log
