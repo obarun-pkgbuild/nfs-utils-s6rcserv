@@ -1,7 +1,7 @@
 nfs-prepare
-rpcbind-daemon
+rpcbind-longrun
 rpcbind-log
-rpc.statd-daemon
+rpc.statd-longrun
 rpc.statd-log
-rpc.mountd-daemon
+rpc.mountd-longrun
 rpc.mountd-log

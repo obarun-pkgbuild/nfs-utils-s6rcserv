@@ -1,0 +1,3 @@
+s6rc rpcbind
+s6rc rpc.statd
+s6rc rpc.mountd
